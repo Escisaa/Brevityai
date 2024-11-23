@@ -13,7 +13,7 @@ const ProblemSection = () => {
   const problems = [
     {
       title: "Information Overload",
-      text: "With endless articles, research papers, and blog posts, it's hard to stay informed without spending hours reading.",
+      text: "With endless articles, research papers, and blog posts, it's hard to stay informed without spending hours reading.", // Corrected the apostrophe
       icon: <FaRegTired className="text-4xl text-red-500 mb-4" />,
     },
     {

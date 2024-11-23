@@ -2,6 +2,7 @@
 
 import React from "react";
 import { loadStripe } from "@stripe/stripe-js";
+import PropTypes from "prop-types"; // Import PropTypes
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
@@ -11,7 +12,6 @@ const CheckoutButton = ({ priceId }) => {
   const handleCheckout = async () => {
     const stripe = await stripePromise;
 
-    // Call backend to create the checkout session
     const res = await fetch("/api/checkout", {
       method: "POST",
       headers: {
@@ -40,6 +40,11 @@ const CheckoutButton = ({ priceId }) => {
       Checkout
     </button>
   );
+};
+
+// Add prop validation
+CheckoutButton.propTypes = {
+  priceId: PropTypes.string.isRequired, // Ensure priceId is a required string
 };
 
 export default CheckoutButton;

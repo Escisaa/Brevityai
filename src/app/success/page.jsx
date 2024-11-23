@@ -1,7 +1,7 @@
 "use client";
 
-import React from "react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types"; // Import PropTypes
 import {
   FaCheckCircle,
   FaSpinner,
@@ -54,7 +54,6 @@ const SuccessPage = () => {
 
         if (data.status === "paid") {
           setPaymentStatus("success");
-          // Optional: Store success status in localStorage
           localStorage.setItem("payment_success", "true");
         } else if (data.status === "pending" && retryCount < MAX_RETRIES) {
           setRetryCount((prev) => prev + 1);
@@ -83,7 +82,6 @@ const SuccessPage = () => {
 
   const handleExtensionRedirect = () => {
     setIsRedirecting(true);
-    // Save completion status before redirect
     localStorage.setItem("payment_completed", "true");
     window.location.href =
       "https://chrome.google.com/webstore/your-extension-link";
@@ -153,6 +151,11 @@ const SuccessPage = () => {
   }
 
   return null;
+};
+
+// Add PropTypes for searchParams and other props
+SuccessPage.propTypes = {
+  searchParams: PropTypes.object, // Prop validation for searchParams if needed (example)
 };
 
 export default SuccessPage;

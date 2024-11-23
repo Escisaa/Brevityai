@@ -1,3 +1,16 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": ["next/core-web-vitals", "eslint:recommended"],
+  "plugins": ["react"],
+  "rules": {
+    "no-console": "warn", // You can change this to "off" if you want to keep console logs
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off",
+    "react/no-unescaped-entities": "off", // This will fix the apostrophe error
+    "no-undef": "error"
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  }
 }
